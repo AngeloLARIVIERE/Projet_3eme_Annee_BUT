@@ -66,3 +66,9 @@ Voici les liens qui nous on permis de réaliser notre réseau de neuronnes à l'
 - [La base de la librairi keras](https://keras.io/examples/vision/image_classification_from_scratch/)
 - [application de la librairi avec la reconnaissance d'image](https://www.analyticsvidhya.com/blog/2020/10/create-image-classification-model-python-keras/)
 - [Problème rencontré par Angelo lors de l'instalation de tenserflow](https://stackoverflow.com/a/76085534)
+
+
+________
+________
+
+Ce projet a été réaliser en 3ème année de BUT informatique en colaboration avec : Quentin ROCHER
