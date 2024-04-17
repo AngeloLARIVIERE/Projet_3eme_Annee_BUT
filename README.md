@@ -1,74 +1,66 @@
 ROCHER Quentin 
 LARIVIERE Angelo
 
-# SAÉ: Modélisation mathématique<br>Reconnaissance faciale en temps réel
+# SAÉ: Modélisation mathématique
+## Reconnaissance faciale en temps réel
 
 <img src="moi.png" width="400" height="auto" />
-
 
 ## Description du projet
 
 Le but de cette SAÉ est de construire un système de reconnaissance faciale qui fonctionne en temps réel.
 
-Le système utilise la caméra de votre PC (ou alors une caméra externe) pour capturer des images de visages. Ainsi, on pourra construire un **dataset** contenant des visages de différentes personnes associées à leurs noms.
+Le système utilise la caméra de votre PC (ou une caméra externe) pour capturer des images de visages. Ainsi, un **dataset** contenant des visages de différentes personnes associées à leurs noms sera créé.
 
-Par la suite, on entraînera un **algorithme de classification** permettant de prédire le nom de la personne qui se trouve devant la caméra en fonction de son visage.
+Par la suite, un **algorithme de classification** sera entraîné pour prédire le nom de la personne se trouvant devant la caméra en fonction de son visage.
 
 ## Implémentation
 
-Les 2 notebooks `1_dataset.ipynb`et `2_ago.ipynb` permettent d'implémenter un tel **système de reconnaissance faciale en temps réel** basé sur l'algorithme des **$k$ plus proches voisins ($k$-NN)**.
+Les notebooks `1_dataset.ipynb` et `2_algo.ipynb` permettent d'implémenter un système de reconnaissance faciale en temps réel basé sur l'algorithme des **$k$ plus proches voisins ($k$-NN)**.
 
-Le premier notebook implémente la création du **dataset** et le second code l'algorithme **$k$-NN** et son intégration dans un système de reconnaissance faciale en temps réel.
+Le premier notebook traite de la création du **dataset**, tandis que le second code l'algorithme **$k$-NN** et son intégration dans un système de reconnaissance faciale en temps réel.
 
 ## Consignes
 
-1. **Comprenez les 2 notebooks** en détails, et, si besoin, débuggez-les jusqu'à ce qu'ils fonctionnent correctement (chez moi, ils marchent).
+1. **Comprenez les 2 notebooks** en détail, et si nécessaire, corrigez-les jusqu'à ce qu'ils fonctionnent correctement (chez moi, ils fonctionnent).
 2. **Adaptez le 2ème notebook** à d'autres algorithmes de classification de votre choix, tels que la régression logistique, les arbres de décision, etc.
-3. Essayer d'adapter votre système pour le **cas d'utilisation de reconnaissance binaire** suivant: le système devra répondre `admis` ou `non admis` suivant que le visage détecté est le votre ou non.
-4. Documentez-vous sur les **réseaux de neurones** et essayez d'implémenter et d'intégrer un algorithme de classification par réseaux de neurones.
-5. Si vous avez le temps, documentez-vous sur les **réseaux de neurones convolutionnels** (qui sont spécialisés dans le traitement des images) et essayez d'implémenter et d'intégrer un algorithme de classification par réseaux de neurones convolutionnels.
-6. Rendez votre projet sous la forme d'un **répertoire GitHub** .  Votre  repo contiendra un **fichier README** (md file) et plusieurs **notebooks jupyter** (ipynb files) propres et commentés  qui présentent votre projet.
+3. Essayez d'adapter votre système pour le **cas d'utilisation de reconnaissance binaire** suivant : le système doit répondre `admis` ou `non admis` en fonction du visage détecté.
+4. Documentez-vous sur les **réseaux de neurones** et tentez d'implémenter et d'intégrer un algorithme de classification basé sur les réseaux de neurones.
+5. Si le temps vous le permet, documentez-vous sur les **réseaux de neurones convolutionnels** et tentez d'implémenter et d'intégrer un algorithme de classification basé sur les réseaux de neurones convolutionnels.
+6. Soumettez votre projet sous forme d'un **répertoire GitHub**. Votre dépôt contiendra un **fichier README** (md file) ainsi que plusieurs **notebooks Jupyter** (ipynb files) clairs et commentés présentant votre projet.
 
-## Instalation des librairis pour le réseau de neuronnes
+## Installation des librairies pour le réseau de neurones
 ````shell
   python.exe -m pip install --upgrade pip
   python.exe -m pip install keras 
   python.exe -m pip install tensorflow 
 ````
 
-# Ecplication du code
-Nous avons faits un fichier jupiter pour chaque modèle que nous avons utilisé. Mais nous avons aussi fait un fichir **py**
-qui synthétise tous notre code pour éviter de trop le dupliquer. Dans celui-ci on peut choisir quelle méthode nous voulons utiliser
-ainsi que de pouvoir determiner qui parmis les gens inscrit dans le dataset sont admis ou non.
 
-# Documentation de la classe DenseNetClassifier
-Pour cette classe nous avonc fait le choix de faire un modèle de résaux de neuronnes  dense avec 3 couche de neuronnes et une couche de sortie avec un nombre de neurone égale au nombre de nom de personne différente enregistrer.   
-la première couche possède 512 neuronne, la deuxième en contient 64, puis la troisième en contient 32.
-Cette classe contient trois fonctions, la première **init** nous permet d'initialiser notre réseau de neuronnes dense. La deuxième fonction 
-**fit** permet d'entrainer notre réseau de neuronnes. Et enfin la fonction **predict** qui nous permet de prédire à qui sont les visages.
+## Explication du code
 
+Nous avons créé un notebook pour chaque modèle utilisé. Nous avons également créé un fichier **.py** qui synthétise tout notre code pour éviter la duplication excessive. Dans ce fichier, on peut choisir la méthode à utiliser et déterminer qui, parmi les personnes enregistrées dans le dataset, est admis ou non.
 
-# Documentation de la classe ConvNetClassifier
-Pour cette classe nous avons fait le choix de faire un modèle de réseaux de neuronnes avec deux couches. La première couche 
-contient 32 neuronnes et la deuxième en contient 16. Il est important de comprendre qui la dernière couche du réseaux de neuronnes
-n'est autre que qu'une couche de type DenseNetClassifier qui contient 32 neuronnes. Dans ce réseau de neuronnes nous utilisons aussi la Régression linéaire.
+## Documentation de la classe DenseNetClassifier
 
-Cette classe contient trois fonctions, la première **init** nous permet d'initialiser notre réseau de neuronnes. La deuxième fonction 
-**fit** permet d'entrainer notre réseau de neuronnes. Et enfin la fonction **predict** qui nous permet de prédire à qui sont les visages.
+Pour cette classe, nous avons opté pour un modèle de réseau de neurones dense avec trois couches de neurones et une couche de sortie comportant un nombre de neurones égal au nombre de noms de personnes différentes enregistrées. La première couche contient 512 neurones, la deuxième en contient 64 et la troisième 32. Cette classe contient trois fonctions : `__init__` pour initialiser le réseau, `fit` pour entraîner le réseau et `predict` pour prédire le propriétaire du visage.
 
+## Documentation de la classe ConvNetClassifier
 
-# Teste de fonctionnement
-Lors de nos différents tests, nous avons pu voir que le réseau de neurones convolutionnel donnait de meilleurs résultats avec un entraînement de 500 epochs ainsi qu'avec un jeu de données d'au moins 40 photos par personne. Cela permet au réseau de mieux s'entraîner sur chaque individu.
+Pour cette classe, nous avons choisi de créer un modèle de réseau de neurones avec deux couches. La première couche contient 32 neurones et la deuxième 16. La dernière couche est une couche de type DenseNetClassifier contenant 32 neurones. Dans ce réseau, nous utilisons également la régression linéaire. Cette classe contient également trois fonctions : `__init__`, `fit` et `predict`.
 
-Nous avons également remarqué, pour les différentes méthodes autres que les réseaux de neurones, qu'elles étaient assez efficaces pour prédire avec précision deux personnes différentes. Cependant, lorsque nous ajoutons plus de deux personnes dans le jeu de données, cela ne lui permet pas de bien prédire les individus.
-# Annexes
-Voici les liens qui nous on permis de réaliser notre réseau de neuronnes à l'aide de la librairi keras.
-- [La base de la librairi keras](https://keras.io/examples/vision/image_classification_from_scratch/)
-- [application de la librairi avec la reconnaissance d'image](https://www.analyticsvidhya.com/blog/2020/10/create-image-classification-model-python-keras/)
-- [Problème rencontré par Angelo lors de l'instalation de tenserflow](https://stackoverflow.com/a/76085534)
+## Tests de fonctionnement
 
+Lors de nos tests, nous avons observé que le réseau de neurones convolutionnel donnait de meilleurs résultats avec un entraînement de 500 epochs et avec un jeu de données d'au moins 40 photos par personne. Cela permet au réseau de mieux s'entraîner sur chaque individu. Pour les autres méthodes, lorsque nous ajoutons plus de deux personnes au jeu de données, la précision diminue.
+
+## Annexes
+
+Voici les liens qui nous ont aidés à réaliser notre réseau de neurones avec la bibliothèque Keras :
+- [Documentation Keras](https://keras.io/examples/vision/image_classification_from_scratch/)
+- [Application de la bibliothèque pour la reconnaissance d'image](https://www.analyticsvidhya.com/blog/2020/10/create-image-classification-model-python-keras/)
+- [Problème rencontré par Angelo lors de l'installation de TensorFlow](https://stackoverflow.com/a/76085534)
 
 ________
 ________
 
-Ce projet a été réaliser en 3ème année de BUT informatique en colaboration avec : Quentin ROCHER
+Ce projet a été réalisé en 3ème année de BUT informatique en collaboration avec : Quentin ROCHER
